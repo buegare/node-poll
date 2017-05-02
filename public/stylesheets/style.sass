@@ -1,0 +1,200 @@
+$light-gray: #777
+$bg-green: #3c763d
+$border-color: #eee
+$bg-gray: #eee
+$ok-color: #5cb85c
+$remove-color: #d9534f
+
+=bg-gray
+  background: $bg-gray
+  padding: 5px
+
+=icon($color, $top, $position)
+  color: $color
+  font-size: 16px
+  position: $position
+  top: $top
+  cursor: pointer
+  display: none
+
+=post-image($height, $width)
+  img
+    height: $height
+    width: $width
+    margin: 0 auto
+
+.content-area
+  margin-top: 90px
+
+#navbar-custom
+  background-color: white
+  border: 0
+
+  div
+    border-bottom: 1px solid $border-color
+
+@media only screen and (max-width: 640px)
+  #navbar-custom
+    position: static
+
+#login
+  border: 1px solid $border-color
+  box-shadow: 0 0 25px 0 rgba(0, 0, 0, .1)
+  margin: 90px auto
+  padding: 20px
+  width: 640px
+  max-width: 100%
+
+  h1
+    color: $light-gray
+
+  label
+    color: $light-gray
+
+#newpost
+  border: 1px solid $border-color
+  box-shadow: 0 0 25px 0 rgba(0 , 0, 0, .1)
+  padding: 20px
+
+  label
+    color: $light-gray
+
+  h1
+    color: $light-gray
+
+.form-errors
+  padding: 0
+
+  li
+    list-style: none
+
+.comment-counter
+  top: 80px
+  width: 960px
+  position: relative
+  margin: 0 auto
+  max-width: 100%
+  display: flex
+  justify-content: flex-end
+
+  div
+    background: $bg-green
+    width: 60px
+
+    &:hover
+      left: 980px
+      width: 70px
+
+  a
+    color: white
+    display: block
+    padding: 10px 5px 7px 7px
+    text-decoration: none
+
+.post-img
+  +post-image(460px, 960px)
+
+.post-img-list
+  +post-image(275px, 100%)
+
+@media only screen and (max-width: 640px)
+  #featured
+    +post-image(325px, 960px)
+
+  .post-img
+    +post-image(325px, 100%)
+
+.category
+  +bg-gray
+  color: $light-gray
+
+.post-date
+  color: $light-gray
+  max-width: 960px
+  margin: 10px auto
+
+.post-title
+  max-width: 960px
+  margin: 10px auto
+  word-wrap: break-word
+  text-align: justify
+
+.post-body
+  max-width: 960px
+  margin: 10px auto
+  color: $light-gray
+  word-wrap: break-word
+  text-align: justify
+
+#arrow-down
+  border: 1px solid $bg-green
+  border-radius: 50%
+  color: $bg-green
+  cursor: pointer
+  height: 50px
+  margin: 150px auto;
+  width: 50px
+  text-align: center
+
+  &:hover
+    background-color: $bg-green
+    color: white
+
+  span
+    font-size: 35px
+    padding: 8px 0 0 4px
+
+#delete-post-btn
+  margin-left: 10px
+
+
+.button-area
+  display: flex
+  justify-content: flex-end
+  margin-bottom: 40px
+  max-width: 960px
+  margin: 0 auto 40px auto
+  span
+    &:nth-of-type(1)
+      +icon($remove-color, 40px, absolute)
+      margin-left: -18px
+
+    &:nth-of-type(2)
+      +icon($ok-color, 39px, absolute)
+
+.target-comments
+  padding: 30px
+  border: 1px solid #eee
+  max-width: 960px;
+  margin: 30px auto
+
+#comments-icon
+  font-size: 30px
+
+.comments-list
+  margin-left: 20px
+  color: $light-gray
+  &:first-of-type
+    margin-top: 20px
+
+.comment-name
+  +bg-gray
+
+.comment-body
+  margin-left: 20px
+ 
+.comment-button-area
+  span
+    &:nth-of-type(1)
+      +icon($ok-color, 5px, relative)
+      margin-left: 10px
+
+    &:nth-of-type(2)
+      +icon($remove-color, 5px, relative)
+      margin-left: 5px
+
+.target-new-comment-form
+  background: #f1f1f1
+  padding: 30px
+  margin: 0 auto 70px auto
+  max-width: 960px

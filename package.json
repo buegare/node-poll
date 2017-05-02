@@ -1,0 +1,34 @@
+{
+  "name": "node-poll",
+  "version": "1.0.0",
+  "description": "Small node app",
+  "main": "app.js",
+  "scripts": {
+    "start": "npm-run-all --parallel watch:server watch:build",
+    "watch:build": "webpack --watch",
+    "watch:server": "nodemon"
+  },
+  "keywords": [
+    "Node",
+    "Pug",
+    "Mongodb",
+    "Express"
+  ],
+  "author": "Bruno Buegare",
+  "license": "ISC",
+  "devDependencies": {
+    "extract-text-webpack-plugin": "^2.1.0",
+    "nodemon": "^1.11.0",
+    "npm-run-all": "^4.0.2",
+    "webpack": "^2.4.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.2",
+    "express-session": "^1.15.2",
+    "express-validator": "^3.2.0",
+    "morgan": "^1.8.1",
+    "pug": "^2.0.0-rc.1"
+  }
+}
