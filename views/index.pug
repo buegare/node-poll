@@ -1,4 +1,11 @@
 extends layout
 
 block content
-	h1 helloworld
+	.form-area
+		.form
+			form(method='post', action='#')
+				input#poll-title(name='title', type='text', placeholder='Enter a title for your post', autofocus, value=(title))
+				input.answer(name='a1', type='text', placeholder='Answer', value=(a1))
+				input.answer(name='a2', type='text', placeholder='Answer', value=(a2))
+				button#add-answer +1
+			input#create-poll-btn(name='submit', type='submit', value='Create Poll')

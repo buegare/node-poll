@@ -1,200 +1,81 @@
-$light-gray: #777
-$bg-green: #3c763d
-$border-color: #eee
-$bg-gray: #eee
-$ok-color: #5cb85c
-$remove-color: #d9534f
+$green-btn: #5cb85c
+$green-btn-border: #4cae4c
+$darker-green-btn: #449d44
+$darker-green-btn-border: #398439
+$blue-btn: #5bc0de
+$blue-btn-border: #46b8da
+$darker-blue-btn: #31b0d5
+$darker-blue-btn-border: #269abc
 
-=bg-gray
-  background: $bg-gray
-  padding: 5px
-
-=icon($color, $top, $position)
-  color: $color
-  font-size: 16px
-  position: $position
-  top: $top
+=btn($bg-color, $border-color, $dk-bg-color, $dk-border-color)
+  color: #fff
+  background-color: $bg-color
+  border-color: $border-color
+  padding: 6px 12px
   cursor: pointer
-  display: none
-
-=post-image($height, $width)
-  img
-    height: $height
-    width: $width
-    margin: 0 auto
-
-.content-area
-  margin-top: 90px
-
-#navbar-custom
-  background-color: white
-  border: 0
-
-  div
-    border-bottom: 1px solid $border-color
-
-@media only screen and (max-width: 640px)
-  #navbar-custom
-    position: static
-
-#login
-  border: 1px solid $border-color
-  box-shadow: 0 0 25px 0 rgba(0, 0, 0, .1)
-  margin: 90px auto
-  padding: 20px
-  width: 640px
-  max-width: 100%
-
-  h1
-    color: $light-gray
-
-  label
-    color: $light-gray
-
-#newpost
-  border: 1px solid $border-color
-  box-shadow: 0 0 25px 0 rgba(0 , 0, 0, .1)
-  padding: 20px
-
-  label
-    color: $light-gray
-
-  h1
-    color: $light-gray
-
-.form-errors
-  padding: 0
-
-  li
-    list-style: none
-
-.comment-counter
-  top: 80px
-  width: 960px
-  position: relative
-  margin: 0 auto
-  max-width: 100%
-  display: flex
-  justify-content: flex-end
-
-  div
-    background: $bg-green
-    width: 60px
-
-    &:hover
-      left: 980px
-      width: 70px
-
-  a
-    color: white
-    display: block
-    padding: 10px 5px 7px 7px
-    text-decoration: none
-
-.post-img
-  +post-image(460px, 960px)
-
-.post-img-list
-  +post-image(275px, 100%)
-
-@media only screen and (max-width: 640px)
-  #featured
-    +post-image(325px, 960px)
-
-  .post-img
-    +post-image(325px, 100%)
-
-.category
-  +bg-gray
-  color: $light-gray
-
-.post-date
-  color: $light-gray
-  max-width: 960px
-  margin: 10px auto
-
-.post-title
-  max-width: 960px
-  margin: 10px auto
-  word-wrap: break-word
-  text-align: justify
-
-.post-body
-  max-width: 960px
-  margin: 10px auto
-  color: $light-gray
-  word-wrap: break-word
-  text-align: justify
-
-#arrow-down
-  border: 1px solid $bg-green
-  border-radius: 50%
-  color: $bg-green
-  cursor: pointer
-  height: 50px
-  margin: 150px auto;
-  width: 50px
-  text-align: center
-
+  border: 1px solid transparent
+  border-radius: 4px
   &:hover
-    background-color: $bg-green
-    color: white
+    background-color: $dk-bg-color
+    border-color: $dk-border-color
 
-  span
-    font-size: 35px
-    padding: 8px 0 0 4px
+body
+  background: #428bca
 
-#delete-post-btn
-  margin-left: 10px
-
-
-.button-area
+.nav
+  margin-bottom: 20px
   display: flex
-  justify-content: flex-end
-  margin-bottom: 40px
-  max-width: 960px
-  margin: 0 auto 40px auto
-  span
-    &:nth-of-type(1)
-      +icon($remove-color, 40px, absolute)
-      margin-left: -18px
+  align-items: center
+  justify-content: space-around
+  #title
+    color: #fff
+  .btn-action
+    button
+      margin-left: 20px
+    #new-poll-btn
+      +btn($green-btn, $green-btn-border, $darker-green-btn, $darker-green-btn-border)
+    #signup-btn
+      +btn($blue-btn, $blue-btn-border, $darker-blue-btn, $darker-blue-btn-border)
+    #signin-btn
+      +btn($blue-btn, $blue-btn-border, $darker-blue-btn, $darker-blue-btn-border)
 
-    &:nth-of-type(2)
-      +icon($ok-color, 39px, absolute)
+@media only screen and (max-width: 640px)
+  .nav
+    flex-direction: column
 
-.target-comments
-  padding: 30px
-  border: 1px solid #eee
-  max-width: 960px;
-  margin: 30px auto
-
-#comments-icon
-  font-size: 30px
-
-.comments-list
-  margin-left: 20px
-  color: $light-gray
-  &:first-of-type
-    margin-top: 20px
-
-.comment-name
-  +bg-gray
-
-.comment-body
-  margin-left: 20px
- 
-.comment-button-area
-  span
-    &:nth-of-type(1)
-      +icon($ok-color, 5px, relative)
-      margin-left: 10px
-
-    &:nth-of-type(2)
-      +icon($remove-color, 5px, relative)
-      margin-left: 5px
-
-.target-new-comment-form
-  background: #f1f1f1
-  padding: 30px
-  margin: 0 auto 70px auto
-  max-width: 960px
+.form-area
+  display: flex
+  justify-content: center
+  .form
+    background: #fff
+    padding: 20px
+    width: 100%
+    max-width: 1080px
+    border-radius: 5px
+    display: flex
+    flex-direction: column
+    input
+      display: block
+    #poll-title
+      width: 100%
+      border: 0
+      border-bottom: #eee solid 1px
+      margin-bottom: 15px
+      font-size: 26px
+      text-align: center
+      &:focus
+        outline: none
+    .answer
+      width: 50%
+      border: 0
+      border-bottom: #eee solid 1px
+      margin-bottom: 15px
+      font-size: 22px
+      &:focus
+        outline: none
+    button
+      +btn($green-btn, $green-btn-border, $darker-green-btn, $darker-green-btn-border)
+    #create-poll-btn
+      align-self: flex-end
+      +btn($green-btn, $green-btn-border, $darker-green-btn, $darker-green-btn-border)
+      font-weight: bold

@@ -1,0 +1,122 @@
+body {
+  background: #428bca; }
+
+.nav {
+  margin-bottom: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around; }
+  .nav #title {
+    color: #fff; }
+  .nav .btn-action button {
+    margin-left: 20px; }
+  .nav .btn-action #new-poll-btn {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+    padding: 6px 12px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px; }
+    .nav .btn-action #new-poll-btn:hover {
+      background-color: #449d44;
+      border-color: #398439; }
+  .nav .btn-action #signup-btn {
+    color: #fff;
+    background-color: #5bc0de;
+    border-color: #46b8da;
+    padding: 6px 12px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px; }
+    .nav .btn-action #signup-btn:hover {
+      background-color: #31b0d5;
+      border-color: #269abc; }
+  .nav .btn-action #signin-btn {
+    color: #fff;
+    background-color: #5bc0de;
+    border-color: #46b8da;
+    padding: 6px 12px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px; }
+    .nav .btn-action #signin-btn:hover {
+      background-color: #31b0d5;
+      border-color: #269abc; }
+
+@media only screen and (max-width: 640px) {
+  .nav {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; } }
+
+.form-area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+  .form-area .form {
+    background: #fff;
+    padding: 20px;
+    width: 100%;
+    max-width: 1080px;
+    border-radius: 5px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
+    .form-area .form input {
+      display: block; }
+    .form-area .form #poll-title {
+      width: 100%;
+      border: 0;
+      border-bottom: #eee solid 1px;
+      margin-bottom: 15px;
+      font-size: 26px;
+      text-align: center; }
+      .form-area .form #poll-title:focus {
+        outline: none; }
+    .form-area .form .answer {
+      width: 50%;
+      border: 0;
+      border-bottom: #eee solid 1px;
+      margin-bottom: 15px;
+      font-size: 22px; }
+      .form-area .form .answer:focus {
+        outline: none; }
+    .form-area .form button {
+      color: #fff;
+      background-color: #5cb85c;
+      border-color: #4cae4c;
+      padding: 6px 12px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      border-radius: 4px; }
+      .form-area .form button:hover {
+        background-color: #449d44;
+        border-color: #398439; }
+    .form-area .form #create-poll-btn {
+      -ms-flex-item-align: end;
+          align-self: flex-end;
+      color: #fff;
+      background-color: #5cb85c;
+      border-color: #4cae4c;
+      padding: 6px 12px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      font-weight: bold; }
+      .form-area .form #create-poll-btn:hover {
+        background-color: #449d44;
+        border-color: #398439; }
