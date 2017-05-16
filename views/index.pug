@@ -3,9 +3,9 @@ extends layout
 block content
 	.form-area
 		.form
-			form(method='post', action='#')
+			form(method='post', action='/poll/create')
 				input#poll-title(name='title', type='text', placeholder='Enter a title for your post', autofocus, value=(title))
-				input.answer(name='a1', type='text', placeholder='Answer', value=(a1))
-				input.answer(name='a2', type='text', placeholder='Answer', value=(a2))
+				input.answer(name='answer', type='text', placeholder='Answer', value=(a1))
+				input.answer(name='answer', type='text', placeholder='Answer', value=(a2))
 				button#add-answer +1
-			input#create-poll-btn(name='submit', type='submit', value='Create Poll')
+				input#create-poll-btn(name='submit', type='submit', value='Create Poll')

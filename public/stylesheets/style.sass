@@ -52,30 +52,32 @@ body
     width: 100%
     max-width: 1080px
     border-radius: 5px
-    display: flex
-    flex-direction: column
-    input
-      display: block
-    #poll-title
-      width: 100%
-      border: 0
-      border-bottom: #eee solid 1px
-      margin-bottom: 15px
-      font-size: 26px
-      text-align: center
-      &:focus
-        outline: none
-    .answer
-      width: 50%
-      border: 0
-      border-bottom: #eee solid 1px
-      margin-bottom: 15px
-      font-size: 22px
-      &:focus
-        outline: none
-    button
-      +btn($green-btn, $green-btn-border, $darker-green-btn, $darker-green-btn-border)
-    #create-poll-btn
-      align-self: flex-end
-      +btn($green-btn, $green-btn-border, $darker-green-btn, $darker-green-btn-border)
-      font-weight: bold
+    form
+      display: flex
+      flex-direction: column
+      input
+        display: block
+      #poll-title
+        width: 100%
+        border: 0
+        border-bottom: #eee solid 1px
+        margin-bottom: 15px
+        font-size: 26px
+        text-align: center
+        &:focus
+          outline: none
+      .answer
+        width: 50%
+        border: 0
+        border-bottom: #eee solid 1px
+        margin-bottom: 15px
+        font-size: 22px
+        &:focus
+          outline: none
+      button
+        +btn($green-btn, $green-btn-border, $darker-green-btn, $darker-green-btn-border)
+        align-self: flex-start
+      #create-poll-btn
+        align-self: flex-end
+        +btn($green-btn, $green-btn-border, $darker-green-btn, $darker-green-btn-border)
+        font-weight: bold

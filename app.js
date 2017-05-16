@@ -6,6 +6,7 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 const config = require('./config/server.js');
 const path = require('path');
+const Poll = require('./models/Poll');
 
 const app = express();
 
@@ -55,6 +56,27 @@ app.use(expressValidator({
 app.get('/', (req, res) => {
 	res.render('index');
 });
+
+// Create poll
+
+app.post('/poll/create', (req, res, next) => {
+
+	console.log(req.body);
+
+	let newPoll = new Poll({
+		title: req.body.title,
+		answer: req.body.anwer
+	});
+
+	Poll.create(newPoll);
+
+	res.redirect('/poll/show');
+});
+
+app.get('/poll/show', (req, res) => {
+	res.render('poll/show');
+});
+
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
