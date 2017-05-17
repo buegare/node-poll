@@ -61,20 +61,27 @@ app.get('/', (req, res) => {
 
 app.post('/poll/create', (req, res, next) => {
 
-	console.log(req.body);
-
 	let newPoll = new Poll({
 		title: req.body.title,
-		answer: req.body.anwer
+		answers: req.body.answer
 	});
 
-	Poll.create(newPoll);
+	Poll.create(newPoll, (poll) => {
+		res.redirect(`/poll/${poll._id}`);
+	});
 
-	res.redirect('/poll/show');
 });
 
-app.get('/poll/show', (req, res) => {
-	res.render('poll/show');
+app.get('/poll/:poll_id', (req, res) => {
+
+	Poll.getPollById(req.params.poll_id, (poll) => {
+
+		res.render('poll/show', { 
+			poll: poll
+		});
+
+	});
+
 });
 
 

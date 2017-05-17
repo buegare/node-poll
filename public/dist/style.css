@@ -77,8 +77,6 @@ body {
       -webkit-box-direction: normal;
           -ms-flex-direction: column;
               flex-direction: column; }
-      .form-area .form form input {
-        display: block; }
       .form-area .form form #poll-title {
         width: 100%;
         border: 0;
@@ -123,3 +121,32 @@ body {
         .form-area .form form #create-poll-btn:hover {
           background-color: #449d44;
           border-color: #398439; }
+
+#show-poll-title {
+  text-align: center;
+  border-bottom: #eee solid 1px; }
+
+.poll-answer {
+  border-bottom: 1px solid #eee;
+  margin-bottom: 10px;
+  padding-bottom: 10px; }
+  .poll-answer input {
+    display: inline-block; }
+  .poll-answer h5 {
+    margin: 0 0 0 7px;
+    color: #717171; }
+
+#vote-btn {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+  padding: 6px 12px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  font-weight: bold; }
+  #vote-btn:hover {
+    background-color: #449d44;
+    border-color: #398439; }

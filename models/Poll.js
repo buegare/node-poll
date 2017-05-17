@@ -9,7 +9,7 @@ db.on('error', console.error.bind(console, 'connection error:'));
 
 let PollSchema = mongoose.Schema({
 	title: { type: String, require: true },
-	answers: [{ answer: String}],
+	answers: [{ type: String, require: true}],
 	creator: { type: String, default: 'anonymous' },
   	date: { type: Date, default: Date.now },
 });
@@ -28,6 +28,7 @@ module.export.create = function(newPoll, cb) {
 	
 	newPoll.save((err, poll) => {
 		if (err) return console.error(err);
+		return cb(poll);
 	});
 
 };
@@ -52,18 +53,12 @@ module.export.create = function(newPoll, cb) {
 // 	});
 // };
 
-// module.export.deleteComment = function(comment, cb) {
-// 	this.findById(comment.postId, function (err, post) {
-// 	  if (err) return console.error(err);
-
-// 		post.comments.splice(comment.commentId, 1);
-		
-// 		post.save((err, post) => {
-// 			if (err) return console.error(err);
-// 			cb(post);
-// 		});
-// 	});
-// };
+module.export.getPollById = function(poll_id, cb) {
+	this.findById(poll_id, function (err, poll) {
+	  if (err) return console.error(err);
+	  cb(poll);
+	});
+};
 
 // module.export.deletePost = function(postId) {
 // 	this.findByIdAndRemove(postId, function (err, post) {  

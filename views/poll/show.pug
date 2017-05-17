@@ -1,1 +1,13 @@
-h1 bla
+extends ../layout
+
+block content
+	.form-area
+		.form
+			h1#show-poll-title= poll.title
+			form(method='post', action="#")
+				each answer in poll.answers
+					.poll-answer
+						input(type="radio" name="answer" value=(answer) )
+						| #{answer}
+						h5 votes: 0
+				input#vote-btn(name='submit', type='submit', value='Vote')
