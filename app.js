@@ -74,13 +74,23 @@ app.post('/poll/create', (req, res, next) => {
 
 app.get('/poll/:poll_id', (req, res) => {
 
-	Poll.getPollById(req.params.poll_id, (poll) => {
+	if (req.params.poll_id.match(/^[0-9a-fA-F]{24}$/)) {
+		
+		Poll.getPollById(req.params.poll_id, (poll) => {
 
-		res.render('poll/show', { 
-			poll: poll
+			res.render('poll/show', { 
+				poll: poll
+			});
+
 		});
+	
+	} else {
+		res.render('poll/show', { 
+			notfound: true
+		});
+	}
 
-	});
+	
 
 });
 
