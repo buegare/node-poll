@@ -11,8 +11,9 @@ body {
           align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around; }
-  .nav #title {
-    color: #fff; }
+  .nav #title a {
+    color: #fff;
+    text-decoration: none; }
   .nav .btn-action button {
     margin-left: 20px; }
   .nav .btn-action #new-poll-btn {
