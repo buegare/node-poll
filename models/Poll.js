@@ -9,9 +9,20 @@ db.on('error', console.error.bind(console, 'connection error:'));
 
 let PollSchema = mongoose.Schema({
 	title: { type: String, require: true },
-	answers: [{ type: String, require: true}],
+	answers: [
+	{ 
+		body: {
+			type: String, 
+			require: true
+		}, 
+		votes: { 
+			type: Number, 
+			default: 0 
+		}
+	}
+],
 	creator: { type: String, default: 'anonymous' },
-  	date: { type: Date, default: Date.now },
+  	date: { type: Date, default: Date.now }
 });
 
 const Poll = module.export = db.model('Poll', PollSchema);
@@ -25,7 +36,7 @@ module.exports = Poll;
 // };
 
 module.export.create = function(newPoll, cb) {
-	
+	// console.log(newPoll);
 	newPoll.save((err, poll) => {
 		if (err) return console.error(err);
 		return cb(poll);
@@ -66,15 +77,20 @@ module.export.getPollById = function(poll_id, cb) {
 // 	});
 // };
 
-// module.export.updatePost = function(edited_post, cb) {
-// 	this.findByIdAndUpdate(edited_post.id, {
-// 		$set: { 
-// 			title: edited_post.title, 
-// 			category: edited_post.category, 
-// 			body: edited_post.body,
-// 			slug: slugfy(edited_post.title)
-// 		}}, { new: true }, function (err, post) {
-// 	  if (err) return console.error(err);
-// 	  cb(post);
-// 	});
-// };
+module.export.updateVote = function(poll_id, answer_id, cb) {
+	this.findById(poll_id, function (err, poll) {
+		if (err) return console.error(err);
+	  
+		poll.answers.findIndex(function(answer) {
+			if(answer._id == answer_id) {
+				answer.votes += 1;
+			}
+		});
+
+		poll.save((err, poll) => {
+			if (err) return console.error(err);
+			cb(poll);
+		});
+	  
+	});
+};

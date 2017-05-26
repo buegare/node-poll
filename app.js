@@ -35,24 +35,6 @@ app.set('view engine', 'pug');
 // Enable server to log requests
 app.use(logger('common'));
 
-//Validator
-app.use(expressValidator({
-  errorFormatter: (param, msg, value) => {
-      let namespace = param.split('.');
-      let root = namespace.shift();
-      let formParam = root;
-
-    while(namespace.length) {
-      formParam += '[' + namespace.shift() + ']';
-    }
-    return {
-      param : formParam,
-      msg   : msg,
-      value : value
-    };
-  }
-}));
-
 app.get('/', (req, res) => {
 	res.render('index');
 });
@@ -63,8 +45,12 @@ app.post('/poll/create', (req, res, next) => {
 
 	let newPoll = new Poll({
 		title: req.body.title,
-		answers: req.body.answer
+		answers: []
 	});
+
+	for (i = 0; i < req.body.answer.length; i++) {
+	    newPoll.answers.push({body: req.body.answer[i]});
+	}
 
 	Poll.create(newPoll, (poll) => {
 		res.redirect(`/poll/${poll._id}`);
@@ -90,7 +76,15 @@ app.get('/poll/:poll_id', (req, res) => {
 		});
 	}
 
-	
+});
+
+app.post('/poll/:poll_id/vote', (req, res) => {
+
+	Poll.updateVote(req.params.poll_id, req.body.answer, (poll) => {
+
+		res.redirect(`/poll/${poll._id}`);
+
+	});
 
 });
 

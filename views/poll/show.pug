@@ -5,10 +5,10 @@ block content
 		.form
 			h1#show-poll-title= !notfound ? poll.title : 'POLL NOT FOUND'
 			if !notfound
-				form(method='post', action="#")
-					each answer in poll.answers
+				form(method='post', action=`/poll/${poll._id}/vote`)
+					each answer, i in poll.answers
 						.poll-answer
-							input(type="radio" name="answer" value=(answer) )
-							| #{answer}
-							h5 votes: 0
+							input(type="radio" name="answer" value=(answer._id) )
+							| #{answer.body}
+							h5 votes: #{answer.votes}
 					input#vote-btn(name='submit', type='submit', value='Vote')
