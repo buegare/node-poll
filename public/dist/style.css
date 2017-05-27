@@ -2,7 +2,6 @@ body {
   background: #428bca; }
 
 .nav {
-  margin-bottom: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -27,17 +26,6 @@ body {
     .nav .btn-action #new-poll-btn:hover {
       background-color: #449d44;
       border-color: #398439; }
-  .nav .btn-action #signup-btn {
-    color: #fff;
-    background-color: #5bc0de;
-    border-color: #46b8da;
-    padding: 6px 12px;
-    cursor: pointer;
-    border: 1px solid transparent;
-    border-radius: 4px; }
-    .nav .btn-action #signup-btn:hover {
-      background-color: #31b0d5;
-      border-color: #269abc; }
   .nav .btn-action #signin-btn {
     color: #fff;
     background-color: #5bc0de;
@@ -122,6 +110,34 @@ body {
         .form-area .form form #create-poll-btn:hover {
           background-color: #449d44;
           border-color: #398439; }
+
+#signin-n-signup-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  max-width: 1350px; }
+
+#signin-n-signup {
+  background: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 1080px;
+  margin-bottom: 10px; }
+  #signin-n-signup input {
+    margin-right: 5px; }
+  #signin-n-signup #sign-in-opt {
+    color: #428bca;
+    cursor: pointer; }
+    #signin-n-signup #sign-in-opt:hover {
+      color: #4263ca; }
+  #signin-n-signup #sign-up-opt {
+    color: #428bca;
+    cursor: pointer; }
+    #signin-n-signup #sign-up-opt:hover {
+      color: #4263ca; }
 
 #show-poll-title {
   text-align: center;

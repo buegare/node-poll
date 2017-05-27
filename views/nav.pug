@@ -3,5 +3,12 @@
 		h1: a(href='/') Create-A-Poll
 	.btn-action
 		button#new-poll-btn New Poll
-		button#signup-btn Sign Up
 		button#signin-btn Sign In
+#signin-n-signup-form
+	#signin-n-signup
+		form(method='post', action='#')
+			input(name='username', type='text', placeholder='Username', autofocus)
+			input(name='password', type='password', placeholder='Password')
+			span#sign-in-opt SignIn
+			span /
+			span#sign-up-opt SignUp

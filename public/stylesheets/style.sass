@@ -19,11 +19,16 @@ $darker-blue-btn-border: #269abc
     background-color: $dk-bg-color
     border-color: $dk-border-color
 
+=sing-in-n-up-opt
+  color: #428bca
+  cursor: pointer
+  &:hover
+    color: #4263ca
+
 body
   background: #428bca
 
 .nav
-  margin-bottom: 20px
   display: flex
   align-items: center
   justify-content: space-around
@@ -36,8 +41,6 @@ body
       margin-left: 20px
     #new-poll-btn
       +btn($green-btn, $green-btn-border, $darker-green-btn, $darker-green-btn-border)
-    #signup-btn
-      +btn($blue-btn, $blue-btn-border, $darker-blue-btn, $darker-blue-btn-border)
     #signin-btn
       +btn($blue-btn, $blue-btn-border, $darker-blue-btn, $darker-blue-btn-border)
 
@@ -82,6 +85,23 @@ body
         +btn($green-btn, $green-btn-border, $darker-green-btn, $darker-green-btn-border)
         font-weight: bold
 
+#signin-n-signup-form
+  display: flex
+  justify-content: flex-end
+  max-width: 1350px
+
+#signin-n-signup
+  background: #fff
+  padding: 15px
+  border-radius: 5px
+  max-width: 1080px
+  margin-bottom: 10px
+  input
+    margin-right: 5px
+  #sign-in-opt
+    +sing-in-n-up-opt
+  #sign-up-opt
+    +sing-in-n-up-opt
 
 #show-poll-title
   text-align: center
