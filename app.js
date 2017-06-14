@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const config = require('./config/server.js');
 const path = require('path');
 const Poll = require('./models/Poll');
+const User = require('./models/User');
 
 const app = express();
 
@@ -88,6 +89,31 @@ app.post('/poll/:poll_id/vote', (req, res) => {
 
 });
 
+app.post('/user/create', (req, res, next) => {
+
+	let newUser = new User({
+		username: req.body.username,
+		password: req.body.password
+	});
+
+	console.log(newUser);
+
+	User.create(newUser, (user) => {
+		res.redirect(`/user/${user.username}/polls`);
+	});
+
+});
+
+app.get('/user/:username/polls', (req, res) => {
+
+	Poll.getPolls(req.params.username, (polls) => {
+
+		res.render('user/show', { 
+			polls: polls
+		});
+
+	});
+});
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
