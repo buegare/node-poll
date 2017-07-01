@@ -3,12 +3,20 @@
 		h1: a(href='/') Create-A-Poll
 	.btn-action
 		button#new-poll-btn New Poll
-		button#signin-btn Sign In
-#signin-n-signup-form
+		if user
+			a(href='/user/logout'): button#logout-btn Logout
+		else
+			button#signup-btn Sign Up
+			button#signin-btn Sign In
+#signup-form(style="display: none;")
 	#signin-n-signup
 		form(method='post', action='/user/create')
-			input(name='username', type='text', placeholder='Username', autofocus)
+			input(name='username', type='text', placeholder='Username')
 			input(name='password', type='password', placeholder='Password')
-			span#sign-in-opt SignIn
-			span /
-			span#sign-up-opt SignUp
+			input#sign-up-opt(name='submit', type='submit', value='Sign Up')
+#signin-form(style="display: none;")
+	#signin-n-signup
+		form(method='post', action='/')
+			input(name='username', type='text', placeholder='Username')
+			input(name='password', type='password', placeholder='Password')
+			input#sign-in-opt(name='submit', type='submit', value='Sign In')

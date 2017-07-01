@@ -6,6 +6,10 @@ $blue-btn: #5bc0de
 $blue-btn-border: #46b8da
 $darker-blue-btn: #31b0d5
 $darker-blue-btn-border: #269abc
+$red-btn: #d9534f
+$red-btn-border: #d43f3a
+$darker-red-btn: #c9302c
+$darker-red-btn-border: #ac2925
 
 =btn($bg-color, $border-color, $dk-bg-color, $dk-border-color)
   color: #fff
@@ -18,12 +22,6 @@ $darker-blue-btn-border: #269abc
   &:hover
     background-color: $dk-bg-color
     border-color: $dk-border-color
-
-=sing-in-n-up-opt
-  color: #428bca
-  cursor: pointer
-  &:hover
-    color: #4263ca
 
 body
   background: #428bca
@@ -43,6 +41,10 @@ body
       +btn($green-btn, $green-btn-border, $darker-green-btn, $darker-green-btn-border)
     #signin-btn
       +btn($blue-btn, $blue-btn-border, $darker-blue-btn, $darker-blue-btn-border)
+    #signup-btn  
+      +btn($blue-btn, $blue-btn-border, $darker-blue-btn, $darker-blue-btn-border)
+    #logout-btn
+      +btn($red-btn, $red-btn-border, $darker-red-btn, $darker-red-btn-border)
 
 @media only screen and (max-width: 640px)
   .nav
@@ -85,10 +87,16 @@ body
         +btn($green-btn, $green-btn-border, $darker-green-btn, $darker-green-btn-border)
         font-weight: bold
 
-#signin-n-signup-form
+=signin-n-signup-form
   display: flex
   justify-content: flex-end
   max-width: 1350px
+
+#signin-form
+  +signin-n-signup-form
+
+#signup-form
+  +signin-n-signup-form
 
 #signin-n-signup
   background: #fff
@@ -99,9 +107,9 @@ body
   input
     margin-right: 5px
   #sign-in-opt
-    +sing-in-n-up-opt
+    +btn($green-btn, $green-btn-border, $darker-green-btn, $darker-green-btn-border)
   #sign-up-opt
-    +sing-in-n-up-opt
+    +btn($green-btn, $green-btn-border, $darker-green-btn, $darker-green-btn-border)
 
 #show-poll-title
   text-align: center

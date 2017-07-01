@@ -36,13 +36,21 @@ app.set('view engine', 'pug');
 // Enable server to log requests
 app.use(logger('common'));
 
+app.use((req, res, next) => {
+  // res.locals.success_msg = req.flash('success_msg');
+  // res.locals.error_msg = req.flash('error_msg');
+  // res.locals.error = req.flash('error');
+  res.locals.user = req.session.user || null;
+  next();
+});
+
 app.get('/', (req, res) => {
 	res.render('index');
 });
 
 // Create poll
 
-app.post('/poll/create', (req, res, next) => {
+app.post('/poll/create', (req, res) => {
 
 	let newPoll = new Poll({
 		title: req.body.title,
@@ -79,6 +87,8 @@ app.get('/poll/:poll_id', (req, res) => {
 
 });
 
+
+// Update vote
 app.post('/poll/:poll_id/vote', (req, res) => {
 
 	Poll.updateVote(req.params.poll_id, req.body.answer, (poll) => {
@@ -89,7 +99,7 @@ app.post('/poll/:poll_id/vote', (req, res) => {
 
 });
 
-app.post('/user/create', (req, res, next) => {
+app.post('/user/create', (req, res) => {
 
 	let newUser = new User({
 		username: req.body.username,
@@ -104,6 +114,30 @@ app.post('/user/create', (req, res, next) => {
 
 });
 
+// Login user
+app.post('/', (req, res) => {
+        
+    User.getUserByUsername(req.body.username, (user) => {
+        if(user) {
+            req.session.user = req.body.username;
+            res.redirect(`/user/${user.username}/polls`);
+        } else {
+            res.render('index');
+        }
+    });
+
+    // if( req.body.username == config.admin.username &&
+    //     req.body.password == config.admin.password) {
+
+    //     req.session.user = req.body.username;
+    //     res.redirect('/');  
+    // } else {
+    //     req.flash('error_msg', 'Invalid credentials');
+    //     res.redirect('/admin');
+    // }
+});
+
+// Show all polls of a user
 app.get('/user/:username/polls', (req, res) => {
 
 	Poll.getPolls(req.params.username, (polls) => {
@@ -113,6 +147,12 @@ app.get('/user/:username/polls', (req, res) => {
 		});
 
 	});
+});
+
+// Logout user
+app.get('/user/logout', (req, res) => {
+    req.session.destroy();
+    res.redirect('/');
 });
 
 // catch 404 and forward to error handler
