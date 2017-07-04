@@ -43,6 +43,8 @@ body
       +btn($blue-btn, $blue-btn-border, $darker-blue-btn, $darker-blue-btn-border)
     #signup-btn  
       +btn($blue-btn, $blue-btn-border, $darker-blue-btn, $darker-blue-btn-border)
+    #mypolls-btn
+      +btn($green-btn, $green-btn-border, $darker-green-btn, $darker-green-btn-border)
     #logout-btn
       +btn($red-btn, $red-btn-border, $darker-red-btn, $darker-red-btn-border)
 
@@ -129,3 +131,28 @@ body
   +btn($green-btn, $green-btn-border, $darker-green-btn, $darker-green-btn-border)
   align-self: flex-end
   font-weight: bold
+
+
+.show-poll-area
+  display: flex
+  justify-content: center
+  .show-poll
+    background: #fff
+    padding: 0 20px
+    width: 100%
+    max-width: 1080px
+    border-radius: 5px
+    margin-bottom: 10px
+    display: flex
+    flex-direction: column
+    text-decoration: none
+    &:hover
+      background: #eee
+    div
+      &:first-child
+        align-self: center
+        color: black
+      &:last-child
+        color: #717171
+        display: flex
+        justify-content: space-between

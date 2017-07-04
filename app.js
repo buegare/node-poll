@@ -54,6 +54,7 @@ app.post('/poll/create', (req, res) => {
 
 	let newPoll = new Poll({
 		title: req.body.title,
+		creator: req.session.user,
 		answers: []
 	});
 

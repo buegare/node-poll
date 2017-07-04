@@ -1,4 +1,14 @@
 extends ../layout
 
 block content
-	h3= polls
+	- let total_votes = 0;
+	each poll in polls
+		.show-poll-area
+			a(href=`/poll/${poll._id}`).show-poll
+				div
+					h1= poll.title
+				div
+					h6 Number of answers: #{poll.answers.length}
+					each answer in poll.answers
+						- total_votes += answer.votes
+					h6 Total of votes: #{total_votes}

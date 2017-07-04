@@ -48,6 +48,17 @@ body {
     .nav .btn-action #signup-btn:hover {
       background-color: #31b0d5;
       border-color: #269abc; }
+  .nav .btn-action #mypolls-btn {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+    padding: 6px 12px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px; }
+    .nav .btn-action #mypolls-btn:hover {
+      background-color: #449d44;
+      border-color: #398439; }
   .nav .btn-action #logout-btn {
     color: #fff;
     background-color: #d9534f;
@@ -210,3 +221,41 @@ body {
   #vote-btn:hover {
     background-color: #449d44;
     border-color: #398439; }
+
+.show-poll-area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+  .show-poll-area .show-poll {
+    background: #fff;
+    padding: 0 20px;
+    width: 100%;
+    max-width: 1080px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    text-decoration: none; }
+    .show-poll-area .show-poll:hover {
+      background: #eee; }
+    .show-poll-area .show-poll div:first-child {
+      -ms-flex-item-align: center;
+          -ms-grid-row-align: center;
+          align-self: center;
+      color: black; }
+    .show-poll-area .show-poll div:last-child {
+      color: #717171;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between; }
