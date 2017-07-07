@@ -2,8 +2,8 @@
 	#title
 		h1: a(href='/') Create-A-Poll
 	.btn-action
-		a(href='/'): button#new-poll-btn New Poll
 		if user
+			a(href='/'): button#new-poll-btn New Poll
 			a(href=`/user/${user}/polls`): button#mypolls-btn My Polls
 			a(href='/user/logout'): button#logout-btn Logout
 		else
