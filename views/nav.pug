@@ -1,3 +1,11 @@
+mixin signin-n-signup-form(action, value)
+	div(id!=attributes.id style="display: none;")
+		#signin-n-signup
+			form(method='post', action=action)
+				input(name='username', type='text', placeholder='Username')
+				input(name='password', type='password', placeholder='Password')
+				input(id!=attributes.id2 name='submit', type='submit', value=value)
+
 .nav
 	#title
 		h1: a(href='/') Create-A-Poll
@@ -9,15 +17,5 @@
 		else
 			button#signup-btn Sign Up
 			button#signin-btn Sign In
-#signup-form(style="display: none;")
-	#signin-n-signup
-		form(method='post', action='/user/create')
-			input(name='username', type='text', placeholder='Username')
-			input(name='password', type='password', placeholder='Password')
-			input#sign-up-opt(name='submit', type='submit', value='Sign Up')
-#signin-form(style="display: none;")
-	#signin-n-signup
-		form(method='post', action='/')
-			input(name='username', type='text', placeholder='Username')
-			input(name='password', type='password', placeholder='Password')
-			input#sign-in-opt(name='submit', type='submit', value='Sign In')
++signin-n-signup-form('/user/create', 'Sign Up')(id='signup-form', id2='sign-up-opt')
++signin-n-signup-form('/', 'Sign In')(id='signin-form', id2='sign-in-opt')
