@@ -6,16 +6,18 @@ mixin signin-n-signup-form(action, value)
 				input(name='password', type='password', placeholder='Password')
 				input(id!=attributes.id2 name='submit', type='submit', value=value)
 
-.nav
-	#title
-		h1: a(href='/') Create-A-Poll
-	.btn-action
-		if user
-			a(href='/'): button#new-poll-btn New Poll
-			a(href=`/user/${user}/polls`): button#mypolls-btn My Polls
-			a(href='/user/logout'): button#logout-btn Logout
-		else
-			button#signup-btn Sign Up
-			button#signin-btn Sign In
+.nav-wrapper
+	.nav
+		#title
+			h1: a(href='/') Create-A-Poll
+		include ./messages
+		.btn-action
+			if user
+				a(href='/'): button#new-poll-btn New Poll
+				a(href=`/user/${user}/polls`): button#mypolls-btn My Polls
+				a(href='/user/logout'): button#logout-btn Logout
+			else
+				button#signup-btn Sign Up
+				button#signin-btn Sign In
 +signin-n-signup-form('/user/create', 'Sign Up')(id='signup-form', id2='sign-up-opt')
 +signin-n-signup-form('/', 'Sign In')(id='signin-form', id2='sign-in-opt')

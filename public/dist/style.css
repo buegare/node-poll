@@ -1,82 +1,92 @@
 body {
   background: #428bca; }
 
-.nav {
+.nav-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around; }
-  .nav #title a {
-    color: #fff;
-    text-decoration: none; }
-  .nav .btn-action button {
-    margin-left: 20px; }
-  .nav .btn-action #new-poll-btn {
-    color: #fff;
-    background-color: #5cb85c;
-    border-color: #4cae4c;
-    padding: 6px 12px;
-    cursor: pointer;
-    border: 1px solid transparent;
-    border-radius: 4px; }
-    .nav .btn-action #new-poll-btn:hover {
-      background-color: #449d44;
-      border-color: #398439; }
-  .nav .btn-action #signin-btn {
-    color: #fff;
-    background-color: #5bc0de;
-    border-color: #46b8da;
-    padding: 6px 12px;
-    cursor: pointer;
-    border: 1px solid transparent;
-    border-radius: 4px; }
-    .nav .btn-action #signin-btn:hover {
-      background-color: #31b0d5;
-      border-color: #269abc; }
-  .nav .btn-action #signup-btn {
-    color: #fff;
-    background-color: #5bc0de;
-    border-color: #46b8da;
-    padding: 6px 12px;
-    cursor: pointer;
-    border: 1px solid transparent;
-    border-radius: 4px; }
-    .nav .btn-action #signup-btn:hover {
-      background-color: #31b0d5;
-      border-color: #269abc; }
-  .nav .btn-action #mypolls-btn {
-    color: #fff;
-    background-color: #5cb85c;
-    border-color: #4cae4c;
-    padding: 6px 12px;
-    cursor: pointer;
-    border: 1px solid transparent;
-    border-radius: 4px; }
-    .nav .btn-action #mypolls-btn:hover {
-      background-color: #449d44;
-      border-color: #398439; }
-  .nav .btn-action #logout-btn {
-    color: #fff;
-    background-color: #d9534f;
-    border-color: #d43f3a;
-    padding: 6px 12px;
-    cursor: pointer;
-    border: 1px solid transparent;
-    border-radius: 4px; }
-    .nav .btn-action #logout-btn:hover {
-      background-color: #c9302c;
-      border-color: #ac2925; }
+  .nav-wrapper .nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    max-width: 1100px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between; }
+    .nav-wrapper .nav #title a {
+      color: #fff;
+      text-decoration: none; }
+    .nav-wrapper .nav .btn-action button {
+      margin-left: 20px; }
+    .nav-wrapper .nav .btn-action #new-poll-btn {
+      color: #fff;
+      background-color: #5cb85c;
+      border-color: #4cae4c;
+      padding: 6px 12px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      border-radius: 4px; }
+      .nav-wrapper .nav .btn-action #new-poll-btn:hover {
+        background-color: #449d44;
+        border-color: #398439; }
+    .nav-wrapper .nav .btn-action #signin-btn {
+      color: #fff;
+      background-color: #5bc0de;
+      border-color: #46b8da;
+      padding: 6px 12px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      border-radius: 4px; }
+      .nav-wrapper .nav .btn-action #signin-btn:hover {
+        background-color: #31b0d5;
+        border-color: #269abc; }
+    .nav-wrapper .nav .btn-action #signup-btn {
+      color: #fff;
+      background-color: #5bc0de;
+      border-color: #46b8da;
+      padding: 6px 12px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      border-radius: 4px; }
+      .nav-wrapper .nav .btn-action #signup-btn:hover {
+        background-color: #31b0d5;
+        border-color: #269abc; }
+    .nav-wrapper .nav .btn-action #mypolls-btn {
+      color: #fff;
+      background-color: #5cb85c;
+      border-color: #4cae4c;
+      padding: 6px 12px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      border-radius: 4px; }
+      .nav-wrapper .nav .btn-action #mypolls-btn:hover {
+        background-color: #449d44;
+        border-color: #398439; }
+    .nav-wrapper .nav .btn-action #logout-btn {
+      color: #fff;
+      background-color: #d9534f;
+      border-color: #d43f3a;
+      padding: 6px 12px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      border-radius: 4px; }
+      .nav-wrapper .nav .btn-action #logout-btn:hover {
+        background-color: #c9302c;
+        border-color: #ac2925; }
 
 @media only screen and (max-width: 640px) {
   .nav {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
-            flex-direction: column; } }
+            flex-direction: column;
+    margin-bottom: 10px; } }
 
 .form-area {
   display: -webkit-box;
@@ -259,3 +269,19 @@ body {
       -webkit-box-pack: justify;
           -ms-flex-pack: justify;
               justify-content: space-between; }
+
+.alert-green {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  padding: 0 10px;
+  border: 1px solid transparent;
+  border-radius: 4px; }
+
+.alert-red {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  padding: 0 10px;
+  border: 1px solid transparent;
+  border-radius: 4px; }

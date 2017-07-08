@@ -8,6 +8,7 @@ const config = require('./config/server.js');
 const path = require('path');
 const Poll = require('./models/Poll');
 const User = require('./models/User');
+const flash = require('connect-flash');
 
 const app = express();
 
@@ -36,10 +37,12 @@ app.set('view engine', 'pug');
 // Enable server to log requests
 app.use(logger('common'));
 
+app.use(flash());
+
 app.use((req, res, next) => {
-  // res.locals.success_msg = req.flash('success_msg');
-  // res.locals.error_msg = req.flash('error_msg');
-  // res.locals.error = req.flash('error');
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
   res.locals.user = req.session.user || null;
   next();
 });
@@ -63,6 +66,7 @@ app.post('/poll/create', (req, res) => {
 	}
 
 	Poll.create(newPoll, (poll) => {
+		req.flash('success_msg', 'Your new poll have been created successfully !');
 		res.redirect(`/poll/${poll._id}`);
 	});
 
@@ -100,6 +104,7 @@ app.post('/poll/:poll_id/vote', (req, res) => {
 
 });
 
+// Sign up user
 app.post('/user/create', (req, res) => {
 
 	let newUser = new User({
@@ -107,9 +112,9 @@ app.post('/user/create', (req, res) => {
 		password: req.body.password
 	});
 
-	console.log(newUser);
-
 	User.create(newUser, (user) => {
+		req.flash('success_msg', 'Thank you for signing up !');
+		req.session.user = user.username;
 		res.redirect(`/user/${user.username}/polls`);
 	});
 
@@ -121,21 +126,12 @@ app.post('/', (req, res) => {
     User.getUserByUsername(req.body.username, (user) => {
         if(user) {
             req.session.user = req.body.username;
+            req.flash('success_msg', 'Signed in successfully !');
             res.redirect(`/user/${user.username}/polls`);
         } else {
             res.render('index');
         }
     });
-
-    // if( req.body.username == config.admin.username &&
-    //     req.body.password == config.admin.password) {
-
-    //     req.session.user = req.body.username;
-    //     res.redirect('/');  
-    // } else {
-    //     req.flash('error_msg', 'Invalid credentials');
-    //     res.redirect('/admin');
-    // }
 });
 
 // Show all polls of a user
