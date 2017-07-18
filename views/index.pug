@@ -1,11 +1,11 @@
 extends layout
 
 block content
-	.form-area
-		.form
-			form(method='post', action='/poll/create')
-				input#poll-title(name='title', type='text', placeholder='Enter a title for your post', autofocus)
-				input.answer(name='answer', type='text', placeholder='Answer')
-				input.answer(name='answer', type='text', placeholder='Answer')
-				button#add-answer +1
-				input#create-poll-btn(name='submit', type='submit', value='Create Poll')
+  .form-area
+    .form
+      form(method='post', action='/poll/create')
+        input#poll-title(name='title', type='text', placeholder='Enter a title for your post', autofocus)
+        input.answer(name='answer', type='text', placeholder='Answer')
+        input.answer(name='answer', type='text', placeholder='Answer')
+        button#add-answer +1
+        input#create-poll-btn(name='submit', type='submit', value='Create Poll')

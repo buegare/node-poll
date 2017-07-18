@@ -1,9 +1,13 @@
 if success_msg != ''
-	.alert-green
-		p #{success_msg}
+  .alert-green
+    p #{success_msg}
 if error_msg != ''
-	.alert-red
-		p #{error_msg}
+  .alert-red
+    p #{error_msg}
 if error != ''
-	.alert-red
-		p #{error}
+  .alert-red
+    p #{error}
+if validation_error != ''
+  .alert-red
+    each e in validation_error
+      p #{e.msg}
