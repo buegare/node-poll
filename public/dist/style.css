@@ -286,3 +286,6 @@ body {
   padding: 0 10px;
   border: 1px solid transparent;
   border-radius: 4px; }
+
+.no-polls {
+  color: white; }
