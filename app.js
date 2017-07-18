@@ -78,6 +78,7 @@ app.use((req, res, next) => {
 
 app.get('/', (req, res) => {
   res.render('index');
+  app.locals.msg = null;
 });
 
 // Create poll
@@ -174,6 +175,7 @@ app.get('/user/:username/polls', (req, res) => {
 // Logout user
 app.get('/user/logout', (req, res) => {
   req.session.destroy();
+  app.locals.msg = 'You succesfully logged out';
   res.redirect('/');
 });
 
