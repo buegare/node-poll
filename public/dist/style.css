@@ -78,8 +78,7 @@ body {
 
 .form-area {
   display: flex;
-  justify-content: center;
-  margin-top: 10px; }
+  justify-content: center; }
   .form-area .form {
     background: #fff;
     padding: 20px;
@@ -231,7 +230,8 @@ body {
   padding: 0 10px;
   border: 1px solid transparent;
   border-radius: 4px;
-  min-width: 200px; }
+  min-width: 200px;
+  margin-bottom: 10px; }
   .alert-green span {
     float: right;
     cursor: pointer; }
@@ -243,7 +243,8 @@ body {
   padding: 0 10px;
   border: 1px solid transparent;
   border-radius: 4px;
-  min-width: 200px; }
+  min-width: 200px;
+  margin-bottom: 10px; }
   .alert-red span {
     float: right;
     cursor: pointer; }
