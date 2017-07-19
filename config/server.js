@@ -1,7 +1,7 @@
 const config = {
-	server: {
-		port: 3001
-	}
+  server: {
+    port: 3001
+  }
 };
 
 module.exports = config;
