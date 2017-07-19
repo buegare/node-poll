@@ -230,7 +230,11 @@ body {
   border-color: #d6e9c6;
   padding: 0 10px;
   border: 1px solid transparent;
-  border-radius: 4px; }
+  border-radius: 4px;
+  min-width: 200px; }
+  .alert-green span {
+    float: right;
+    cursor: pointer; }
 
 .alert-red {
   color: #a94442;
@@ -238,7 +242,11 @@ body {
   border-color: #ebccd1;
   padding: 0 10px;
   border: 1px solid transparent;
-  border-radius: 4px; }
+  border-radius: 4px;
+  min-width: 200px; }
+  .alert-red span {
+    float: right;
+    cursor: pointer; }
 
 .no-polls {
   color: white; }

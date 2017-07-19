@@ -1,16 +1,21 @@
 if success_msg != ''
   .alert-green
+    span x
     p #{success_msg}
 if error_msg != ''
   .alert-red
+    span x
     p #{error_msg}
 if error != ''
   .alert-red
+    span x
     p #{error}
 if validation_error != ''
   .alert-red
+    span x
     each e in validation_error
       p #{e.msg}
 if msg
   .alert-green
+    span x
     p #{msg}
