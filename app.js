@@ -154,10 +154,16 @@ app.post('/user/create', (req, res) => {
 app.post('/', (req, res) => {
   User.getUserByUsername(req.body.username, (user) => {
     if (user) {
+      if (user.password !== req.body.password) {
+        res.locals.error_msg = 'Wrong creadentials';
+        res.render('index');
+        return;
+      }
       req.session.user = req.body.username;
       req.flash('success_msg', 'Signed in successfully !');
       res.redirect(`/user/${user.username}/polls`);
     } else {
+      res.locals.error_msg = 'User not found';
       res.render('index');
     }
   });
