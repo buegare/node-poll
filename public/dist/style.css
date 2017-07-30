@@ -230,11 +230,13 @@ body {
   padding: 0 10px;
   border: 1px solid transparent;
   border-radius: 4px;
-  min-width: 200px;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row-reverse; }
   .alert-green span {
     float: right;
-    cursor: pointer; }
+    cursor: pointer;
+    margin-left: 10px; }
 
 .alert-red {
   color: #a94442;
@@ -243,11 +245,13 @@ body {
   padding: 0 10px;
   border: 1px solid transparent;
   border-radius: 4px;
-  min-width: 200px;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row-reverse; }
   .alert-red span {
     float: right;
-    cursor: pointer; }
+    cursor: pointer;
+    margin-left: 10px; }
 
 .no-polls {
   color: white; }

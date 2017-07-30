@@ -5,8 +5,8 @@ const db = config.mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
 const UserSchema = config.mongoose.Schema({
-  username: { type: String, require: true },
-  password: { type: String, require: true },
+  username: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
   date: { type: Date, default: Date.now }
 });
 
@@ -15,10 +15,7 @@ module.export = db.model('User', UserSchema);
 module.exports = User;
 
 module.export.create = function create(newUser, cb) {
-  newUser.save((err, user) => {
-    if (err) return console.error(err);
-    return cb(user);
-  });
+  newUser.save((err, user) => cb(err, user));
 };
 
 module.export.getUserByUsername = function getUserByUsername(username, cb) {

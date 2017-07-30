@@ -5,17 +5,11 @@ const db = config.mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
 const PollSchema = config.mongoose.Schema({
-  title: { type: String, require: true },
+  title: { type: String, required: true },
   answers: [
     {
-      body: {
-        type: String,
-        require: true
-      },
-      votes: {
-        type: Number,
-        default: 0
-      }
+      body: { type: String, required: true },
+      votes: { type: Number, default: 0 }
     }
   ],
   creator: { type: String, default: 'anonymous' },

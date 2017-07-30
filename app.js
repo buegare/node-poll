@@ -143,10 +143,19 @@ app.post('/user/create', (req, res) => {
     password: req.body.password
   });
 
-  User.create(newUser, (user) => {
-    req.flash('success_msg', 'Thank you for signing up !');
-    req.session.user = user.username;
-    res.redirect(`/user/${user.username}/polls`);
+  User.create(newUser, (err, user) => {
+    // check if there was duplication
+    if (err.code === 11000) {
+      res.locals.error_msg = 'Sorry, this username has been taken';
+      res.render('index');
+    } else if (err.message === 'User validation failed') {
+      res.locals.error_msg = "Username and Password can't be blank";
+      res.render('index');
+    } else {
+      req.flash('success_msg', 'Thank you for signing up !');
+      req.session.user = user.username;
+      res.redirect(`/user/${user.username}/polls`);
+    }
   });
 });
 

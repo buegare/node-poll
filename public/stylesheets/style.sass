@@ -167,26 +167,25 @@ body
   padding: 0 10px
   border: 1px solid transparent
   border-radius: 4px
-  min-width: 200px
   margin-bottom: 10px
+  display: flex
+  flex-direction: row-reverse
+  span
+    float: right
+    cursor: pointer
+    margin-left: 10px
 
 .alert-green
   color: #3c763d
   background-color: #dff0d8
   border-color: #d6e9c6
   +alert-messages
-  span
-    float: right
-    cursor: pointer
 
 .alert-red
   color: #a94442
   background-color: #f2dede
   border-color: #ebccd1
   +alert-messages
-  span
-    float: right
-    cursor: pointer
 
 .no-polls
   color: white
