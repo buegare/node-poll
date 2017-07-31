@@ -119,9 +119,19 @@ app.post('/poll/create', (req, res) => {
 app.get('/poll/:poll_id', (req, res) => {
   if (req.params.poll_id.match(/^[0-9a-fA-F]{24}$/)) {
     Poll.getPollById(req.params.poll_id, (poll) => {
-      res.render('poll/show', {
-        poll
-      });
+      if (poll) {
+        if (poll.creator === 'anonymous') {
+          res.render('poll/show', { poll });
+        } else if (req.session.user && poll.creator === req.session.user) {
+          res.render('poll/show', { poll });
+        } else {
+          return res.redirect('/');
+        }
+      } else {
+        res.render('poll/show', {
+          notfound: true
+        });
+      }
     });
   } else {
     res.render('poll/show', {
@@ -185,8 +195,13 @@ app.post('/', (req, res) => {
   });
 });
 
+const auth = (req, res, next) => {
+  if (req.session && req.session.user === req.params.username) return next();
+  return res.redirect('/');
+};
+
 // Show all polls of a user
-app.get('/user/:username/polls', (req, res) => {
+app.get('/user/:username/polls', auth, (req, res) => {
   Poll.getPolls(req.params.username, (polls) => {
     res.render('user/show', {
       polls
