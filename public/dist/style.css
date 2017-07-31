@@ -2,14 +2,23 @@ body {
   background: #428bca; }
 
 .nav-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-around; }
+  -ms-flex-pack: distribute;
+      justify-content: space-around; }
   .nav-wrapper .nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     width: 100%;
     max-width: 1100px;
-    align-items: center;
-    justify-content: space-between; }
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between; }
     .nav-wrapper .nav #title a {
       color: #fff;
       text-decoration: none; }
@@ -73,12 +82,19 @@ body {
 
 @media only screen and (max-width: 640px) {
   .nav {
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     margin-bottom: 10px; } }
 
 .form-area {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center; }
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
   .form-area .form {
     background: #fff;
     padding: 20px;
@@ -86,8 +102,13 @@ body {
     max-width: 1080px;
     border-radius: 5px; }
     .form-area .form form {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
-      flex-direction: column; }
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column; }
       .form-area .form form #poll-title {
         width: 100%;
         border: 0;
@@ -113,12 +134,14 @@ body {
         cursor: pointer;
         border: 1px solid transparent;
         border-radius: 4px;
-        align-self: flex-start; }
+        -ms-flex-item-align: start;
+            align-self: flex-start; }
         .form-area .form form button:hover {
           background-color: #449d44;
           border-color: #398439; }
       .form-area .form form #create-poll-btn {
-        align-self: flex-end;
+        -ms-flex-item-align: end;
+            align-self: flex-end;
         color: #fff;
         background-color: #5cb85c;
         border-color: #4cae4c;
@@ -132,13 +155,21 @@ body {
           border-color: #398439; }
 
 #signin-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   max-width: 1350px; }
 
 #signup-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   max-width: 1350px; }
 
 #signin-n-signup {
@@ -187,6 +218,8 @@ body {
     color: #717171; }
 
 .show-poll-actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex; }
   .show-poll-actions #vote-btn {
     color: #fff;
@@ -198,7 +231,9 @@ body {
     border-radius: 4px;
     font-weight: bold;
     margin-left: 20px;
-    flex-grow: 1; }
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1; }
     .show-poll-actions #vote-btn:hover {
       background-color: #449d44;
       border-color: #398439; }
@@ -211,7 +246,9 @@ body {
     border: 1px solid transparent;
     border-radius: 4px;
     font-weight: bold;
-    flex-grow: 1; }
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1; }
     .show-poll-actions #delete-btn:hover {
       background-color: #c9302c;
       border-color: #ac2925; }
@@ -225,14 +262,20 @@ body {
     border-radius: 4px;
     font-weight: bold;
     margin-left: 20px;
-    flex-grow: 1; }
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1; }
     .show-poll-actions #edit-btn:hover {
       background-color: #31b0d5;
       border-color: #269abc; }
 
 .show-poll-area {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center; }
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
   .show-poll-area .show-poll {
     background: #fff;
     padding: 0 20px;
@@ -240,18 +283,29 @@ body {
     max-width: 1080px;
     border-radius: 5px;
     margin-bottom: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     text-decoration: none; }
     .show-poll-area .show-poll:hover {
       background: #eee; }
     .show-poll-area .show-poll div:first-child {
-      align-self: center;
+      -ms-flex-item-align: center;
+          -ms-grid-row-align: center;
+          align-self: center;
       color: black; }
     .show-poll-area .show-poll div:last-child {
       color: #717171;
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
-      justify-content: space-between; }
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between; }
 
 .alert-green {
   color: #3c763d;
@@ -261,8 +315,13 @@ body {
   border: 1px solid transparent;
   border-radius: 4px;
   margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row-reverse; }
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse; }
   .alert-green span {
     float: right;
     cursor: pointer;
@@ -276,8 +335,13 @@ body {
   border: 1px solid transparent;
   border-radius: 4px;
   margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row-reverse; }
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse; }
   .alert-red span {
     float: right;
     cursor: pointer;
