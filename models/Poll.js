@@ -58,3 +58,7 @@ module.export.updateVote = function updateVote(pollId, answerId, cb) {
     return cb(poll);
   });
 };
+
+module.export.deletePoll = function deletePoll(pollId) {
+  this.deleteOne(pollId, err => console.error(err));
+};

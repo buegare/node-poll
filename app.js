@@ -115,6 +115,7 @@ app.post('/poll/create', (req, res) => {
   });
 });
 
+// Show poll
 app.get('/poll/:poll_id', (req, res) => {
   if (req.params.poll_id.match(/^[0-9a-fA-F]{24}$/)) {
     Poll.getPollById(req.params.poll_id, (poll) => {
@@ -127,6 +128,13 @@ app.get('/poll/:poll_id', (req, res) => {
       notfound: true
     });
   }
+});
+
+// Delete poll
+app.delete('/poll/delete', (req, res) => {
+  Poll.deletePoll(req.body.poll_id);
+  req.flash('success_msg', 'Poll deleted successfully !');
+  res.end();
 });
 
 // Update vote
@@ -144,17 +152,16 @@ app.post('/user/create', (req, res) => {
   });
 
   User.create(newUser, (err, user) => {
-    // check if there was duplication
-    if (err.code === 11000) {
+    if (user) {
+      req.flash('success_msg', 'Thank you for signing up !');
+      req.session.user = user.username;
+      res.redirect(`/user/${user.username}/polls`);
+    } else if (err.code === 11000) {     // check if there was duplication
       res.locals.error_msg = 'Sorry, this username has been taken';
       res.render('index');
     } else if (err.message === 'User validation failed') {
       res.locals.error_msg = "Username and Password can't be blank";
       res.render('index');
-    } else {
-      req.flash('success_msg', 'Thank you for signing up !');
-      req.session.user = user.username;
-      res.redirect(`/user/${user.username}/polls`);
     }
   });
 });

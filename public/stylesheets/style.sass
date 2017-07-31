@@ -133,11 +133,25 @@ body
     margin: 0 0 0 7px
     color: #717171
 
-#vote-btn
-  +btn($green-btn, $green-btn-border, $darker-green-btn, $darker-green-btn-border)
-  align-self: flex-end
-  font-weight: bold
+.show-poll-actions
+  display: flex
 
+  #vote-btn
+    +btn($green-btn, $green-btn-border, $darker-green-btn, $darker-green-btn-border)
+    font-weight: bold
+    margin-left: 20px
+    flex-grow: 1
+
+  #delete-btn
+    +btn($red-btn, $red-btn-border, $darker-red-btn, $darker-red-btn-border)
+    font-weight: bold
+    flex-grow: 1
+
+  #edit-btn
+    +btn($blue-btn, $blue-btn-border, $darker-blue-btn, $darker-blue-btn-border)
+    font-weight: bold
+    margin-left: 20px
+    flex-grow: 1
 
 .show-poll-area
   display: flex
