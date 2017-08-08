@@ -19,5 +19,6 @@ mixin signin-n-signup-form(action, value)
 			else
 				button#signup-btn Sign Up
 				button#signin-btn Sign In
+				a(href= url): button#google Google
 +signin-n-signup-form('/user/create', 'Sign Up')(id='signup-form', id2='sign-up-opt')
 +signin-n-signup-form('/', 'Sign In')(id='signin-form', id2='sign-in-opt')

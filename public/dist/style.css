@@ -23,15 +23,15 @@ body {
       color: #fff;
       text-decoration: none; }
     .nav-wrapper .nav .btn-action button {
-      margin-left: 20px; }
+      margin-left: 20px;
+      border-radius: 4px; }
     .nav-wrapper .nav .btn-action #new-poll-btn {
       color: #fff;
       background-color: #5cb85c;
       border-color: #4cae4c;
       padding: 6px 12px;
       cursor: pointer;
-      border: 1px solid transparent;
-      border-radius: 4px; }
+      border: 1px solid transparent; }
       .nav-wrapper .nav .btn-action #new-poll-btn:hover {
         background-color: #449d44;
         border-color: #398439; }
@@ -41,8 +41,7 @@ body {
       border-color: #46b8da;
       padding: 6px 12px;
       cursor: pointer;
-      border: 1px solid transparent;
-      border-radius: 4px; }
+      border: 1px solid transparent; }
       .nav-wrapper .nav .btn-action #signin-btn:hover {
         background-color: #31b0d5;
         border-color: #269abc; }
@@ -52,8 +51,7 @@ body {
       border-color: #46b8da;
       padding: 6px 12px;
       cursor: pointer;
-      border: 1px solid transparent;
-      border-radius: 4px; }
+      border: 1px solid transparent; }
       .nav-wrapper .nav .btn-action #signup-btn:hover {
         background-color: #31b0d5;
         border-color: #269abc; }
@@ -63,8 +61,7 @@ body {
       border-color: #4cae4c;
       padding: 6px 12px;
       cursor: pointer;
-      border: 1px solid transparent;
-      border-radius: 4px; }
+      border: 1px solid transparent; }
       .nav-wrapper .nav .btn-action #mypolls-btn:hover {
         background-color: #449d44;
         border-color: #398439; }
@@ -74,8 +71,7 @@ body {
       border-color: #d43f3a;
       padding: 6px 12px;
       cursor: pointer;
-      border: 1px solid transparent;
-      border-radius: 4px; }
+      border: 1px solid transparent; }
       .nav-wrapper .nav .btn-action #logout-btn:hover {
         background-color: #c9302c;
         border-color: #ac2925; }
@@ -133,7 +129,6 @@ body {
         padding: 6px 12px;
         cursor: pointer;
         border: 1px solid transparent;
-        border-radius: 4px;
         -ms-flex-item-align: start;
             align-self: flex-start; }
         .form-area .form form button:hover {
@@ -148,7 +143,6 @@ body {
         padding: 6px 12px;
         cursor: pointer;
         border: 1px solid transparent;
-        border-radius: 4px;
         font-weight: bold; }
         .form-area .form form #create-poll-btn:hover {
           background-color: #449d44;
@@ -186,8 +180,7 @@ body {
     border-color: #4cae4c;
     padding: 6px 12px;
     cursor: pointer;
-    border: 1px solid transparent;
-    border-radius: 4px; }
+    border: 1px solid transparent; }
     #signin-n-signup #sign-in-opt:hover {
       background-color: #449d44;
       border-color: #398439; }
@@ -197,8 +190,7 @@ body {
     border-color: #4cae4c;
     padding: 6px 12px;
     cursor: pointer;
-    border: 1px solid transparent;
-    border-radius: 4px; }
+    border: 1px solid transparent; }
     #signin-n-signup #sign-up-opt:hover {
       background-color: #449d44;
       border-color: #398439; }
@@ -228,12 +220,12 @@ body {
     padding: 6px 12px;
     cursor: pointer;
     border: 1px solid transparent;
-    border-radius: 4px;
     font-weight: bold;
     margin-left: 20px;
     -webkit-box-flex: 1;
         -ms-flex-positive: 1;
-            flex-grow: 1; }
+            flex-grow: 1;
+    border-radius: 4px; }
     .show-poll-actions #vote-btn:hover {
       background-color: #449d44;
       border-color: #398439; }
@@ -244,30 +236,31 @@ body {
     padding: 6px 12px;
     cursor: pointer;
     border: 1px solid transparent;
-    border-radius: 4px;
     font-weight: bold;
     -webkit-box-flex: 1;
         -ms-flex-positive: 1;
-            flex-grow: 1; }
+            flex-grow: 1;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px; }
     .show-poll-actions #delete-btn:hover {
       background-color: #c9302c;
       border-color: #ac2925; }
-  .show-poll-actions #edit-btn {
+  .show-poll-actions #share-btn {
     color: #fff;
-    background-color: #5bc0de;
-    border-color: #46b8da;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
     padding: 6px 12px;
     cursor: pointer;
     border: 1px solid transparent;
-    border-radius: 4px;
     font-weight: bold;
-    margin-left: 20px;
     -webkit-box-flex: 1;
         -ms-flex-positive: 1;
-            flex-grow: 1; }
-    .show-poll-actions #edit-btn:hover {
-      background-color: #31b0d5;
-      border-color: #269abc; }
+            flex-grow: 1;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px; }
+    .show-poll-actions #share-btn:hover {
+      background-color: #449d44;
+      border-color: #398439; }
 
 .show-poll-area {
   display: -webkit-box;
@@ -349,3 +342,84 @@ body {
 
 .no-polls {
   color: white; }
+
+.email-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end; }
+  .email-wrapper .email-box {
+    width: 600px;
+    position: fixed;
+    bottom: 0; }
+    .email-wrapper .email-box .email-header {
+      background: #404040;
+      height: 30px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px; }
+      .email-wrapper .email-box .email-header span {
+        -ms-flex-item-align: center;
+            -ms-grid-row-align: center;
+            align-self: center;
+        color: #eee; }
+        .email-wrapper .email-box .email-header span:first-of-type {
+          margin-left: 10px; }
+        .email-wrapper .email-box .email-header span:last-of-type {
+          margin-right: 10px; }
+    .email-wrapper .email-box .email-form form {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column; }
+      .email-wrapper .email-box .email-form form #input-to {
+        height: 30px;
+        text-indent: 10px;
+        border: 1px solid #eee; }
+        .email-wrapper .email-box .email-form form #input-to:focus {
+          outline: none; }
+      .email-wrapper .email-box .email-form form #input-subject {
+        height: 30px;
+        text-indent: 10px;
+        border: 1px solid #eee; }
+        .email-wrapper .email-box .email-form form #input-subject:focus {
+          outline: none; }
+      .email-wrapper .email-box .email-form form textarea {
+        resize: none;
+        padding: 10px 10px 0 10px;
+        border: 1px solid #eee; }
+        .email-wrapper .email-box .email-form form textarea:focus {
+          outline: none; }
+      .email-wrapper .email-box .email-form form .send-email {
+        background: #f5f5f5;
+        height: 40px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex; }
+        .email-wrapper .email-box .email-form form .send-email #send-email-btn {
+          color: #fff;
+          background-color: #5bc0de;
+          border-color: #46b8da;
+          padding: 6px 12px;
+          cursor: pointer;
+          border: 1px solid transparent;
+          width: 70px;
+          font-weight: bold;
+          border-radius: 4px;
+          -ms-flex-item-align: center;
+              -ms-grid-row-align: center;
+              align-self: center;
+          margin-left: 10px; }
+          .email-wrapper .email-box .email-form form .send-email #send-email-btn:hover {
+            background-color: #31b0d5;
+            border-color: #269abc; }

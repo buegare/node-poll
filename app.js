@@ -4,11 +4,13 @@ const session = require('express-session');
 const expressValidator = require('express-validator');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
-const config = require('./config/server.js');
+const configServer = require('./config/server.js');
 const path = require('path');
 const Poll = require('./models/Poll');
 const User = require('./models/User');
 const flash = require('connect-flash');
+const google = require('googleapis');
+const configGoogle = require('./config/google.js');
 
 const app = express();
 
@@ -27,6 +29,25 @@ app.use(session({
   resave: true,
   cookie: { maxAge: 3600000 },
 }));
+
+function getOAuthClient() {
+  const OAuth2 = google.auth.OAuth2;
+  return new OAuth2(configGoogle.clientId, configGoogle.clientSecret, configGoogle.redirectionURL);
+}
+
+function getAuthUrl() {
+  const oauth2Client = getOAuthClient();
+  const scopes = [
+    'https://www.googleapis.com/auth/plus.me',
+    'https://www.googleapis.com/auth/gmail.readonly'
+  ];
+  const url = oauth2Client.generateAuthUrl({
+    access_type: 'offline',
+    scope: scopes
+  });
+  return url;
+}
+
 
 app.set('views', path.join(__dirname, 'views'));
 
@@ -77,7 +98,8 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-  res.render('index');
+  const url = getAuthUrl();
+  res.render('index', { url });
   app.locals.msg = null;
 });
 
@@ -154,23 +176,74 @@ app.post('/poll/:poll_id/vote', (req, res) => {
   });
 });
 
-// Sign up user
-app.post('/user/create', (req, res) => {
-  const newUser = new User({
-    username: req.body.username,
-    password: req.body.password
-  });
+function createUser(username, password, req, res) {
+  const newUser = new User({ username, password });
 
   User.create(newUser, (err, user) => {
-    if (user) {
+    if (err) {
+      res.locals.error_msg = err;
+      res.render('index');
+    } else {
       req.flash('success_msg', 'Thank you for signing up !');
       req.session.user = user.username;
       res.redirect(`/user/${user.username}/polls`);
-    } else if (err.code === 11000) {     // check if there was duplication
-      res.locals.error_msg = 'Sorry, this username has been taken';
-      res.render('index');
-    } else if (err.message === 'User validation failed') {
-      res.locals.error_msg = "Username and Password can't be blank";
+    }
+  });
+}
+
+// Sign up user
+app.post('/user/create', (req, res) => {
+  createUser(req.body.username, req.body.password, req, res);
+});
+
+function listLabels(auth) {
+  const gmail = google.gmail('v1');
+  gmail.users.labels.list({
+    auth,
+    userId: 'me',
+  }, (err, response) => {
+    if (err) {
+      console.log(`The API returned an error: ${err}`);
+      return;
+    }
+    const labels = response.labels;
+    if (labels.length === 0) {
+      console.log('No labels found.');
+    } else {
+      console.log('Labels:');
+      for (let i = 0; i < labels.length; i++) {
+        const label = labels[i];
+        console.log('- %s', label.name);
+      }
+    }
+  });
+}
+
+// Google oauth
+app.use('/oauth2callback', (req, res) => {
+  const oauth2Client = getOAuthClient();
+  const plus = google.plus('v1');
+  oauth2Client.getToken(req.query.code, (err, tokens) => {
+    if (!err) {
+      oauth2Client.setCredentials(tokens);
+      req.session.tokens = tokens;
+
+      plus.people.get({ userId: 'me', auth: oauth2Client }, (error, response) => {
+        if (error) return console.error(error);
+        listLabels(oauth2Client);
+
+        User.googleUserExists(response.id, (user) => {
+          if (user) {
+            req.session.user = response.id;
+            req.flash('success_msg', 'Signed in successfully !');
+            res.redirect(`/user/${response.id}/polls`);
+          } else {
+            createUser(response.id, response.etag, req, res);
+          }
+        });
+      });
+    } else {
+      res.locals.error_msg = 'Login failed !';
       res.render('index');
     }
   });
@@ -178,19 +251,14 @@ app.post('/user/create', (req, res) => {
 
 // Login user
 app.post('/', (req, res) => {
-  User.getUserByUsername(req.body.username, (user) => {
-    if (user) {
-      if (user.password !== req.body.password) {
-        res.locals.error_msg = 'Wrong creadentials';
-        res.render('index');
-        return;
-      }
+  User.login(req.body.username, req.body.password, (err, user) => {
+    if (err) {
+      res.locals.error_msg = err;
+      res.render('index');
+    } else {
       req.session.user = req.body.username;
       req.flash('success_msg', 'Signed in successfully !');
       res.redirect(`/user/${user.username}/polls`);
-    } else {
-      res.locals.error_msg = 'User not found';
-      res.render('index');
     }
   });
 });
@@ -234,4 +302,4 @@ app.use((err, req, res) => {
   res.render('error');
 });
 
-app.listen(config.server.port, () => console.log(`Server started on port ${config.server.port}...`));
+app.listen(configServer.server.port, () => console.log(`Server started on port ${configServer.server.port}...`));

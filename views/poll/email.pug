@@ -1,0 +1,12 @@
+.email-wrapper
+  .email-box
+    .email-header
+      span Share Poll
+      span x
+    .email-form
+      form(method='post', action='#')
+        input#input-to(name='to', type='text', placeholder='To', autofocus)
+        input#input-subject(name='subject', type='text', placeholder='Subject')
+        textarea(name='body', rows=20)
+        .send-email
+          input#send-email-btn(name='send-email', type='submit', value='Send')

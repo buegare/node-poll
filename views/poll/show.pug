@@ -14,5 +14,7 @@ block content
 					div.show-poll-actions
 						if user === poll.creator
 							input#delete-btn(postId= poll._id, type='submit', value='Delete')
-							input#edit-btn(postId= poll._id, type='submit', value='Edit')
-						input#vote-btn(name='submit', type='submit', value='Vote')
+							input#share-btn(postId= poll._id, type='submit', value='Share Poll via email')
+						else
+							input#vote-btn(name='submit', type='submit', value='Vote')
+	include email
